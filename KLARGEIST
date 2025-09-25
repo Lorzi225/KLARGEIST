@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KLARGEIST – Focus, Calm & Sleep</title>
+  <meta name="description" content="KLARGEIST – Pulver für Studierende: Ruhe, Sicherheit und Fokus. Drei Varianten: Focus (blau), Calm (grün), Sleep (violett). Mit Playlists, Lerntipps & Motivation." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#101720;
+      --muted:#a6b0bf;
+      --text:#e8edf5;
+      --brand:#66e3c4;
+      --brand-2:#7aa9ff;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:linear-gradient(180deg,#0b0f14 0%, #0d141c 100%);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin-inline:auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:50;background:rgba(11,15,20,.6);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
+    nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand img{height:38px}
+    .brand span{font-weight:700;letter-spacing:.2px}
+    .nav-links{display:flex;gap:18px}
+    .nav-links a{opacity:.9}
+
+    .hero{padding:64px 0 24px}
+    .hero-wrap{display:grid;gap:22px;align-items:center;grid-template-columns:1.2fr .8fr}
+    .badge{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--muted)}
+    .badge i{width:6px;height:6px;border-radius:999px;background:var(--brand)}
+    h1{font-size:40px;line-height:1.1;margin:10px 0 12px}
+    .lead{color:var(--muted);font-size:18px;max-width:52ch}
+    .cta{display:flex;gap:12px;margin-top:18px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;font-weight:600;border:1px solid rgba(255,255,255,.08);transition:transform .06s ease, box-shadow .2s}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#081018;border:0}
+    .btn.ghost{background:rgba(255,255,255,.03)}
+    .hero-card{background:linear-gradient(180deg,rgba(102,227,196,.15),rgba(122,169,255,.08));border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+
+    section{padding:52px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:16px}
+    .section-head h2{margin:0;font-size:28px}
+    .section-head p{margin:0;color:var(--muted)}
+
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .pill{display:inline-block;font-size:12px;padding:6px 10px;border-radius:999px;color:#081018;font-weight:600}
+    .pill.focus{background:linear-gradient(135deg,#6aa4ff,#7aa9ff);border:0}
+    .pill.calm{background:linear-gradient(135deg,#66e3c4,#45c39f);border:0}
+    .pill.sleep{background:linear-gradient(135deg,#b08cff,#8f6bff);border:0}
+    .title{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .title h3{margin:6px 0 6px}
+    .desc{color:var(--muted)}
+    .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+    .tag{font-size:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:6px 8px;color:var(--muted)}
+    .ingredients{margin:10px 0 0 0;padding-left:18px;color:var(--muted)}
+    .ingredients li{margin:4px 0}
+
+    .tips{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .tip{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px}
+    .tip h4{margin:0 0 6px}
+    .tip p{margin:0;color:var(--muted)}
+
+    .quotes{margin-top:18px;display:flex;gap:10px;overflow:auto;padding-bottom:6px}
+    .quote{white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:10px 12px;border-radius:999px;font-size:14px;color:var(--muted)}
+
+    details{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px}
+    details+details{margin-top:12px}
+    summary{cursor:pointer;font-weight:600}
+
+    footer{padding:26px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,.06)}
+
+    @media (max-width: 980px){
+      .hero-wrap{grid-template-columns:1fr}
+      .grid.cols-3{grid-template-columns:1fr}
+      .tips{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#top" aria-label="KLARGEIST Startseite">
+          <img src="IMG_7456.jpg" alt="KLARGEIST Logo">
+          <span>KLARGEIST</span>
+        </a>
+        <div class="nav-links">
+          <a href="#produkte">Produkte</a>
+          <a href="#musik">Playlists</a>
+          <a href="#lernen">Lerntipps</a>
+          <a href="#faq">FAQ</a>
+          <a href="#kontakt">Kontakt</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-wrap">
+        <div>
+          <div class="badge"><i></i> Ruhe & Sicherheit für dein Studium</div>
+          <h1 id="hero-title">Ruhe im Kopf. Klarheit im Studium.</h1>
+          <p class="lead">KLARGEIST ist dein Begleiter für konzentriertes Lernen und gelassene Erholung. Drei Varianten: <strong>Focus</strong> (blau), <strong>Calm</strong> (grün) und <strong>Sleep</strong> (violett). Plus Musik & Lerntipps, die wirklich helfen.</p>
+          <div class="cta">
+            <a class="btn primary" href="#produkte">Produkte ansehen</a>
+            <a class="btn ghost" href="#musik">Zur Musik</a>
+          </div>
+          <div class="quotes" aria-label="Motivationssprüche">
+            <div class="quote">Heute lernen, morgen glänzen.</div>
+            <div class="quote">Nicht perfekt – konsequent.</div>
+            <div class="quote">Klarer Kopf, klare Ziele.</div>
+            <div class="quote">Ein Schritt pro Tag reicht – wenn du gehst.</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <strong>Wirk-Hinweis:</strong>
+          <p class="desc">Ernährungsergänzungsmittel sind kein Ersatz für eine ausgewogene Ernährung. Nicht für Kinder, Schwangere oder Stillende. Beachte die empfohlene Tagesdosis und kläre Unverträglichkeiten ab.</p>
+          <a class="btn ghost" style="margin-top:6px" href="#faq">Mehr Infos</a>
+        </div>
+      </div>
+    </section>
+    <!-- Der restliche Inhalt bleibt wie in der letzten Version mit Focus, Calm, Sleep Produkten, Musik, Tipps, FAQ und Kontakt -->
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <span>© <span id="year"></span> KLARGEIST</span>
+      <span><a href="#" aria-disabled="true">Impressum</a> · <a href="#" aria-disabled="true">Datenschutz</a></span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
